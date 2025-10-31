@@ -9,6 +9,9 @@ export default {
   features: {
     title: "Возможности",
   },
+  events: {
+    title: "События",
+  },
   _tech: {
     title: "Техническое",
     type: "separator",
