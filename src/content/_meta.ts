@@ -9,6 +9,10 @@ export default {
   features: {
     title: "Возможности",
   },
+  _memories: {
+    title: "Воспоминания",
+    type: "separator",
+  },
   events: {
     title: "События",
   },
