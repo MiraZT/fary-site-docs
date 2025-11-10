@@ -4,7 +4,9 @@ export default {
       collapsed: true,
     },
   },
-  index: {},
+  index: {
+    title: "Добро пожаловать",
+  },
   "getting-started": {},
   features: {
     title: "Возможности",

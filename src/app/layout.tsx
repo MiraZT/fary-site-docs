@@ -15,16 +15,10 @@ export const metadata: Metadata = {
   description: "Официальная документация, или же вики проекта, FarySD (Фейри).",
 };
 
+// Exemple: release-server--nelya-1 
 const banner = (
-  <Banner storageKey="release-server--nelya-1">
-    Nelya 1.x уже вышла:{" "}
-    <a
-      href="https://fary.lanvalird.ru"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      сайт проекта
-    </a>
+  <Banner storageKey="update-wiki--10-11-2025">
+    Вики была полностью переработана
   </Banner>
 );
 const navbar = <Navbar logo={<b>Фейри</b>} />;
