@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   description: "Официальная документация, или же вики проекта, FarySD (Фейри).",
 };
 
-// Exemple: release-server--nelya-1 
+// Exemple: release-server--nelya-1
 const banner = (
   <Banner storageKey="update-wiki--10-11-2025">
     Вики была полностью переработана
