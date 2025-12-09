@@ -18,6 +18,9 @@ export default {
   events: {
     title: "События",
   },
+  ideas: {
+    title: "Идеи",
+  },
   _tech: {
     title: "Техническое",
     type: "separator",
