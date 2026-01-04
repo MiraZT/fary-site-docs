@@ -5,7 +5,10 @@ import { Banner, Head } from "nextra/components";
 
 import { getPageMap } from "nextra/page-map";
 
+import { Ubuntu_Sans } from "next/font/google";
+
 import "nextra-theme-docs/style.css";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
@@ -17,12 +20,17 @@ export const metadata: Metadata = {
 
 // Exemple: release-server--nelya-1
 const banner = (
-  <Banner storageKey="update-wiki--10-11-2025">
-    Вики была полностью переработана
+  <Banner storageKey="update-styling-wiki--04-01-2026">
+    Цветовая схема была обновлена
   </Banner>
 );
 const navbar = <Navbar logo={<b>Фейри</b>} />;
 const footer = <Footer>MIT {new Date().getFullYear()} © Команда Фейри.</Footer>;
+
+const fontSans = Ubuntu_Sans({
+  weight: ["400", "600"],
+  subsets: ["latin", "cyrillic"],
+});
 
 export default async function RootLayout({
   children,
@@ -32,12 +40,11 @@ export default async function RootLayout({
   return (
     <html
       lang="ru"
-      
       // Required
       dir="ltr"
       suppressHydrationWarning
     >
-      <Head />
+      <Head color={{ hue: 25, saturation: 100, lightness: 50 }} />
       <body>
         <Layout
           banner={banner}
