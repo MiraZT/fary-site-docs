@@ -31,11 +31,10 @@ export default async function RootLayout({
 }) {
   return (
     <html
-      // Not required, but good for SEO
       lang="ru"
-      // Required to be set
+      
+      // Required
       dir="ltr"
-      // Suggested by `next-themes` package https://github.com/pacocoursey/next-themes#with-app
       suppressHydrationWarning
     >
       <Head />
@@ -44,7 +43,7 @@ export default async function RootLayout({
           banner={banner}
           navbar={navbar}
           pageMap={await getPageMap()}
-          docsRepositoryBase="https://github.com/mirazt/fary-site-docs/tree/main/src/content"
+          docsRepositoryBase="https://github.com/mirazt/fary-site-docs/tree/main"
           footer={footer}
         >
           {children}
