@@ -5,10 +5,62 @@ type Props = { params: Promise<{ slug: string[] }> };
 
 export const generateStaticParams = generateStaticParamsFor("slug");
 
+const BASE_SITE_URL = "https://wiki.fary.lanvalird.ru";
+
 export async function generateMetadata(props: Props) {
-  const params = await props.params;
-  const { metadata } = await importPage(params.slug);
-  return metadata;
+  const { slug } = await props.params;
+  const { metadata } = await importPage(slug);
+
+  const pageUrl = slug ? `${BASE_SITE_URL}/${slug}` : BASE_SITE_URL;
+
+  const title = metadata.title || "Документация FarySD";
+  const description =
+    metadata.description ||
+    "Официальная документация, или же вики проекта, FarySD (Фейри).";
+
+  const ogImageUrl = new URL(
+    "/api/og",
+    process.env.NEXT_PUBLIC_SITE_URL || BASE_SITE_URL,
+  );
+  ogImageUrl.searchParams.set("title", title);
+  if (metadata.description) {
+    ogImageUrl.searchParams.set("description", description);
+  }
+
+  return {
+    title: {
+      default: "Документация FarySD",
+      template: "%s « Фейри",
+    },
+    description: description,
+
+    openGraph: {
+      title: title,
+      description: description,
+      type: slug ? "article" : "website",
+      url: pageUrl,
+      images: [
+        {
+          url: ogImageUrl.toString(),
+          width: 1200,
+          height: 630,
+          alt: metadata.title || "Документация FarySD",
+        },
+      ],
+      siteName: "FarySD (Фейри)",
+      locale: "ru_RU",
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: title,
+      description: description,
+      images: [ogImageUrl.toString()],
+    },
+    alternates: {
+      canonical: pageUrl,
+    },
+  };
 }
 
 const Wrapper = getMDXComponents().wrapper;
