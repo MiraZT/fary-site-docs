@@ -13,15 +13,19 @@ export async function generateMetadata(props: Props) {
 
   const pageUrl = slug ? `${BASE_SITE_URL}/${slug}` : BASE_SITE_URL;
 
-  const title = metadata.title + " « Документация Фейри"|| "Документация Фейри";
+  const title =
+    metadata.title + " « Документация Фейри" || "Документация Фейри";
   const description =
-    metadata.description ||    "Документация проекта Фейри (он же FarySD).";
+    metadata.description || "Документация проекта Фейри (он же FarySD).";
 
   const ogImageUrl = new URL(
     "/api/og",
     process.env.NEXT_PUBLIC_SITE_URL || BASE_SITE_URL,
   );
-  ogImageUrl.searchParams.set("title", metadata.title /* чтобы без "водянки" */);
+  ogImageUrl.searchParams.set(
+    "title",
+    metadata.title /* чтобы без "водянки" */,
+  );
   if (metadata.description) {
     ogImageUrl.searchParams.set("description", description);
   }
