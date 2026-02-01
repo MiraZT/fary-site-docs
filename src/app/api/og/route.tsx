@@ -11,31 +11,72 @@ export async function GET(request: NextRequest) {
     const description =
       searchParams.get("description") ||
       "Официальная документация, или же вики проекта, FarySD (Фейри).";
+    const updatedAt = searchParams.get("updatedAt") || null;
+
+    const primaryColor = "#d56716";
+    const borderColor = "#fffcfb";
+    const backgroundColor = "#ffebda";
+    const textColor = "#fffcfb";
+
+    const size = { width: 1200, height: 630 };
 
     return new ImageResponse(
       <div
         style={{
           fontSize: 60,
+          backgroundColor: borderColor,
           width: "100%",
           height: "100%",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
           padding: "40px",
-          textAlign: "center",
         }}
-        className={"x:bg-primary-100 x:bg-primary-400/10 x:text-primary-600"}
       >
-        <div style={{ fontSize: 72, fontWeight: "bold", marginBottom: 30 }}>
-          {title}
+        <div
+          style={{
+            fontSize: 28,
+            textAlign: "center",
+            borderRadius: 36,
+            color: primaryColor,
+            backgroundColor: backgroundColor,
+            width: "100%",
+            height: "100%",
+            padding: "24px 16px",
+            marginTop: 50,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <div style={{ opacity: 0.6 }}>{updatedAt}</div>
+          <div
+            style={{
+              color: primaryColor,
+              fontSize: 72,
+              fontWeight: "bold",
+              marginBottom: 30,
+            }}
+          >
+            {title}
+          </div>
+          <div style={{ color: "#", fontSize: 36, opacity: 0.8 }}>
+            {description}
+          </div>
+          <div
+            style={{
+              fontSize: 28,
+              borderRadius: 36,
+              color: textColor,
+              backgroundColor: primaryColor,
+              padding: "24px 16px",
+              marginTop: 50,
+            }}
+          >
+            wiki.fary.lanvalird.ru
+          </div>
         </div>
-        <div style={{ fontSize: 36, opacity: 0.8 }}>{description}</div>
-        <div style={{ marginTop: 50, fontSize: 28 }}>fary.lanvalird.ru</div>
       </div>,
       {
-        width: 1200,
-        height: 630,
+        ...size,
         headers: {
           "Cache-Control": "public, immutable, no-transform, max-age=18000",
         },
