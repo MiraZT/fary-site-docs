@@ -13,16 +13,15 @@ export async function generateMetadata(props: Props) {
 
   const pageUrl = slug ? `${BASE_SITE_URL}/${slug}` : BASE_SITE_URL;
 
-  const title = metadata.title || "Документация FarySD";
+  const title = metadata.title + " « Документация Фейри"|| "Документация Фейри";
   const description =
-    metadata.description ||
-    "Официальная документация, или же вики проекта, FarySD (Фейри).";
+    metadata.description ||    "Документация проекта Фейри (он же FarySD).";
 
   const ogImageUrl = new URL(
     "/api/og",
     process.env.NEXT_PUBLIC_SITE_URL || BASE_SITE_URL,
   );
-  ogImageUrl.searchParams.set("title", title);
+  ogImageUrl.searchParams.set("title", metadata.title /* чтобы без "водянки" */);
   if (metadata.description) {
     ogImageUrl.searchParams.set("description", description);
   }
@@ -44,7 +43,7 @@ export async function generateMetadata(props: Props) {
           url: ogImageUrl.toString(),
           width: 1200,
           height: 630,
-          alt: metadata.title || "Документация FarySD",
+          alt: `Обложка поста "${title}"`,
         },
       ],
       siteName: "FarySD (Фейри)",

@@ -10,15 +10,22 @@ export async function GET(request: NextRequest) {
     const title = searchParams.get("title") || "Документация FarySD";
     const description =
       searchParams.get("description") ||
-      "Официальная документация, или же вики проекта, FarySD (Фейри).";
+      "Документация проекта Фейри (он же FarySD).";
     const updatedAt = searchParams.get("updatedAt") || null;
 
-    const primaryColor = "#d56716";
-    const borderColor = "#fffcfb";
-    const backgroundColor = "#ffebda";
-    const textColor = "#fffcfb";
-
     const size = { width: 1200, height: 630 };
+
+    const primaryColor = "#d56716";
+    const borderColor = "#feebda";
+    const backgroundColor = "#fffcfb";
+    const textColor = "#161616";
+
+    const containerStyle = {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+    } as const;
 
     return new ImageResponse(
       <div
@@ -28,6 +35,7 @@ export async function GET(request: NextRequest) {
           width: "100%",
           height: "100%",
           padding: "40px",
+          ...containerStyle,
         }}
       >
         <div
@@ -40,32 +48,27 @@ export async function GET(request: NextRequest) {
             width: "100%",
             height: "100%",
             padding: "24px 16px",
-            marginTop: 50,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
+            ...containerStyle,
           }}
         >
           <div style={{ opacity: 0.6 }}>{updatedAt}</div>
           <div
             style={{
               color: primaryColor,
-              fontSize: 72,
-              fontWeight: "bold",
-              marginBottom: 30,
+              fontSize: 62,
+              fontWeight: "700",
             }}
           >
             {title}
           </div>
-          <div style={{ color: "#", fontSize: 36, opacity: 0.8 }}>
+          <div style={{ color: textColor, fontSize: 36, opacity: 0.8 }}>
             {description}
           </div>
           <div
             style={{
               fontSize: 28,
               borderRadius: 36,
-              color: textColor,
+              color: backgroundColor,
               backgroundColor: primaryColor,
               padding: "24px 16px",
               marginTop: 50,
