@@ -20,8 +20,8 @@ export const metadata: Metadata = {
 
 // Exemple: release-server--nelya-1
 const banner = (
-  <Banner storageKey="update-styling-wiki--04-01-2026">
-    Цветовая схема была обновлена
+  <Banner storageKey="add-opengraph-to-wiki--03-02-2026">
+    Добавлены OpenGraph-описания для статей
   </Banner>
 );
 const navbar = <Navbar logo={<b>Фейри</b>} />;
@@ -50,7 +50,7 @@ export default async function RootLayout({
           banner={banner}
           navbar={navbar}
           pageMap={await getPageMap()}
-          docsRepositoryBase="https://github.com/mirazt/fary-site-docs/tree/main"
+          docsRepositoryBase="https://github.com/mirazt/fary-site-docs/tree/master"
           footer={footer}
         >
           {children}
