@@ -8,7 +8,10 @@ import { getPageMap } from "nextra/page-map";
 
 import { Ubuntu_Sans } from "next/font/google";
 
-import { DOCUMENTATION_REPOSITORY_BASE, MAIN_SITE_URL } from "@/shared/lib/constants";
+import {
+  DOCUMENTATION_REPOSITORY_BASE,
+  MAIN_SITE_URL,
+} from "@/shared/lib/constants";
 
 import "nextra-theme-docs/style.css";
 import "./globals.css";
