@@ -2,10 +2,13 @@ import type { Metadata } from "next";
 
 import { Footer, Layout, Navbar } from "nextra-theme-docs";
 import { Banner, Head } from "nextra/components";
+import { GlobeIcon } from "nextra/icons";
 
 import { getPageMap } from "nextra/page-map";
 
 import { Ubuntu_Sans } from "next/font/google";
+
+import { DOCUMENTATION_REPOSITORY_BASE, MAIN_SITE_URL } from "@/shared/lib/constants";
 
 import "nextra-theme-docs/style.css";
 import "./globals.css";
@@ -24,7 +27,13 @@ const banner = (
     Добавлены OpenGraph-описания для статей
   </Banner>
 );
-const navbar = <Navbar logo={<b>Фейри</b>} />;
+const navbar = (
+  <Navbar
+    logo={<b>Фейри</b>}
+    projectLink={MAIN_SITE_URL}
+    projectIcon={<GlobeIcon />}
+  />
+);
 const footer = <Footer>MIT {new Date().getFullYear()} © Команда Фейри.</Footer>;
 
 const fontSans = Ubuntu_Sans({
@@ -50,7 +59,7 @@ export default async function RootLayout({
           banner={banner}
           navbar={navbar}
           pageMap={await getPageMap()}
-          docsRepositoryBase="https://github.com/mirazt/fary-site-docs/tree/master"
+          docsRepositoryBase={DOCUMENTATION_REPOSITORY_BASE}
           footer={footer}
         >
           {children}
