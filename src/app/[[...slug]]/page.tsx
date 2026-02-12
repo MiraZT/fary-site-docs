@@ -1,10 +1,8 @@
-import { generateStaticParamsFor, importPage } from "nextra/pages";
+import { importPage } from "nextra/pages";
 import { useMDXComponents as getMDXComponents } from "@/mdx-components";
-
 import type { PageProps as Props } from "./_types";
 
-export const generateStaticParams = generateStaticParamsFor("slug");
-export { generateMetadata } from "./_lib/generate-metadata";
+export { generateMetadata, generateStaticParams } from "./_lib";
 
 const Wrapper = getMDXComponents().wrapper;
 
