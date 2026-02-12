@@ -61,7 +61,7 @@ export default async function RootLayout({
         <Layout
           banner={banner}
           navbar={navbar}
-          pageMap={await getPageMap()}
+          pageMap={await getPageMap('/main')}
           docsRepositoryBase={DOCUMENTATION_REPOSITORY_BASE}
           footer={footer}
         >
