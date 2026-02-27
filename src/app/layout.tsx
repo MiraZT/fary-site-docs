@@ -57,7 +57,7 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <Head color={{ hue: 25, saturation: 100, lightness: 50 }} />
-      <body>
+      <body className={fontSans.className}>
         <Layout
           banner={banner}
           navbar={navbar}
