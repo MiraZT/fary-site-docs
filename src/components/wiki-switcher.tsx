@@ -20,8 +20,7 @@ export function WikiSwitcher() {
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedPath = event.target.value;
-    const newPath =
-      pathname?.replace(currentWiki.path, selectedPath) || selectedPath;
+    const newPath = selectedPath;
     router.push(newPath);
   };
 
