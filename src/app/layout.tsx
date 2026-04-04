@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Footer, Layout, Navbar } from "nextra-theme-docs";
 import { Banner, Head } from "nextra/components";
 import { GlobeIcon } from "nextra/icons";
+import { WikiSwitcher } from "@/components/wiki-switcher";
 
 import { getPageMap } from "nextra/page-map";
 
@@ -35,7 +36,9 @@ const navbar = (
     logo={<b>Фейри</b>}
     projectLink={MAIN_SITE_URL}
     projectIcon={<GlobeIcon />}
-  />
+  >
+    <WikiSwitcher />
+  </Navbar>
 );
 const footer = <Footer>MIT {new Date().getFullYear()} © Команда Фейри.</Footer>;
 
@@ -61,7 +64,7 @@ export default async function RootLayout({
         <Layout
           banner={banner}
           navbar={navbar}
-          pageMap={await getPageMap('/main')}
+          pageMap={await getPageMap("/main")}
           docsRepositoryBase={DOCUMENTATION_REPOSITORY_BASE}
           footer={footer}
         >
