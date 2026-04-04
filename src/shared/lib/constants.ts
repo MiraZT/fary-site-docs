@@ -11,4 +11,4 @@ export const DOCUMENTATION_REPOSITORY_BASE =
 export const WIKI_SECTIONS = [
   { id: "main", name: "Основной раздел", path: "/main" },
   { id: "design", name: "Дизайн", path: "/design" },
-];
+] as const;
