@@ -7,3 +7,8 @@ export const REPOSITORY_BASE =
   process.env.REPOSITORY_BASE || "https://github.com/mirazt/fary-site-docs";
 export const DOCUMENTATION_REPOSITORY_BASE =
   process.env.DOCUMENTATION_REPOSITORY_BASE || `${REPOSITORY_BASE}/tree/master`;
+
+export const WIKI_SECTIONS = [
+  { id: "main", name: "Основной раздел", path: "/main" },
+  { id: "design", name: "Дизайн", path: "/design" },
+];

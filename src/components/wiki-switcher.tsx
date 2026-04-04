@@ -3,20 +3,15 @@
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 
-// @TODO: брать динамически (например, через пропсы)
-const WIKIS = [
-  { id: "main", name: "Основной раздел", path: "/main" },
-  { id: "design", name: "Дизайн", path: "/design" },
-  { id: "programming", name: "Программирование", path: "/programming" },
-  { id: "enthusiasts", name: "Для энтузиастов", path: "/enthusiasts" },
-];
+import { WIKI_SECTIONS } from "@/shared/lib/constants";
 
 export function WikiSwitcher() {
   const router = useRouter();
   const pathname = usePathname();
 
   const currentWiki =
-    WIKIS.find((wiki) => pathname?.startsWith(wiki.path)) || WIKIS[0];
+    WIKI_SECTIONS.find((wiki) => pathname?.startsWith(wiki.path)) ||
+    WIKI_SECTIONS[0];
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedPath = event.target.value;
@@ -26,7 +21,7 @@ export function WikiSwitcher() {
 
   return (
     <select value={currentWiki.path} onChange={handleChange}>
-      {WIKIS.map((wiki) => (
+      {WIKI_SECTIONS.map((wiki) => (
         <option key={wiki.id} value={wiki.path}>
           {wiki.name}
         </option>
