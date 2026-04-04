@@ -4,7 +4,4 @@ export default {
       collapsed: true,
     },
   },
-  index: {
-    title: "Добро пожаловать (Дизайн)",
-  },
 };

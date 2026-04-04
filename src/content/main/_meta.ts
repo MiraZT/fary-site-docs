@@ -25,9 +25,9 @@ export default {
     title: "Техническое",
     type: "separator",
   },
-  guides: {
+  /* guides: {
     title: "Гайды",
-  },
+  }, */
   builds: {
     title: "Сборки игры",
   },
