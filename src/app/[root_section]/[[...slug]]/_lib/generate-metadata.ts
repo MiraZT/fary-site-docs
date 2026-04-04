@@ -2,12 +2,16 @@ import { importPage } from "nextra/pages";
 import { BASE_SITE_URL } from "@/shared/lib/constants";
 
 import type { PageProps } from "../_types";
+import type { Metadata } from "next";
 
-export async function generateMetadata(props: PageProps) {
-  const { slug } = await props.params;
-  const { metadata } = await importPage(slug);
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const { root_section, slug } = await props.params;
+  const pathSegments = [root_section, ...(slug || [])];
+  const { metadata } = await importPage(pathSegments);
 
-  const pageUrl = slug ? `${BASE_SITE_URL}/${slug}` : BASE_SITE_URL;
+  const pageUrl = slug
+    ? `${BASE_SITE_URL}/${pathSegments.join("/")}`
+    : BASE_SITE_URL;
 
   const title =
     `${metadata.title} « Документация Фейри` || "Документация Фейри";

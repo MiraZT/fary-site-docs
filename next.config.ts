@@ -12,4 +12,13 @@ export default withNextra({
     },
     root: path.join(__dirname),
   },
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: "/main",
+        permanent: true,
+      },
+    ];
+  },
 });

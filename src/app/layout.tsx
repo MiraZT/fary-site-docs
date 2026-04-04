@@ -1,18 +1,8 @@
 import type { Metadata } from "next";
 
-import { Footer, Layout, Navbar } from "nextra-theme-docs";
-import { Banner, Head } from "nextra/components";
-import { GlobeIcon } from "nextra/icons";
-import { WikiSwitcher } from "@/components/wiki-switcher";
-
-import { getPageMap } from "nextra/page-map";
+import { Head } from "nextra/components";
 
 import { Ubuntu_Sans } from "next/font/google";
-
-import {
-  DOCUMENTATION_REPOSITORY_BASE,
-  MAIN_SITE_URL,
-} from "@/shared/lib/constants";
 
 import "nextra-theme-docs/style.css";
 import "./globals.css";
@@ -24,23 +14,6 @@ export const metadata: Metadata = {
   },
   description: "Официальная документация, или же вики проекта, FarySD (Фейри).",
 };
-
-// Exemple: release-server--nelya-1
-const banner = (
-  <Banner storageKey="add-opengraph-to-wiki--03-02-2026">
-    Добавлены OpenGraph-описания для статей
-  </Banner>
-);
-const navbar = (
-  <Navbar
-    logo={<b>Фейри</b>}
-    projectLink={MAIN_SITE_URL}
-    projectIcon={<GlobeIcon />}
-  >
-    <WikiSwitcher />
-  </Navbar>
-);
-const footer = <Footer>MIT {new Date().getFullYear()} © Команда Фейри.</Footer>;
 
 const fontSans = Ubuntu_Sans({
   weight: ["400", "600"],
@@ -60,17 +33,7 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <Head color={{ hue: 25, saturation: 100, lightness: 50 }} />
-      <body>
-        <Layout
-          banner={banner}
-          navbar={navbar}
-          pageMap={await getPageMap("/main")}
-          docsRepositoryBase={DOCUMENTATION_REPOSITORY_BASE}
-          footer={footer}
-        >
-          {children}
-        </Layout>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
