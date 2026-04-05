@@ -4,7 +4,7 @@ export default {
       collapsed: true,
     },
   },
-  socials: {
-    title: "Социальные сети",
+  posts: {
+    title: "Стилизация постов",
   },
 };
