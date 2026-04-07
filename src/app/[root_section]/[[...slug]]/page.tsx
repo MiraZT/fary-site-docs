@@ -1,7 +1,8 @@
 import { useMDXComponents as getMDXComponents } from "@/mdx-components";
 import { importPage } from "nextra/pages";
-import type { PageProps as Props } from "./_types";
 import { resolvePathSegments } from "./_lib";
+
+import type { PageProps as Props } from "./_types";
 
 export { generateMetadata, generateStaticParams } from "./_lib";
 

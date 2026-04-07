@@ -1,7 +1,4 @@
-interface Params {
-  root_section: string;
-  slug?: string[];
-}
+import { Segments as Params } from "../_types";
 
 export function resolvePathSegments(params: Params): string[] {
   const { root_section: rootSection, slug } = params;
