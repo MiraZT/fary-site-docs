@@ -14,9 +14,7 @@ export function WikiSwitcher() {
     WIKI_SECTIONS[0];
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedPath = event.target.value;
-    const newPath = selectedPath;
-    router.push(newPath);
+    router.push(event.target.value);
   };
 
   return (

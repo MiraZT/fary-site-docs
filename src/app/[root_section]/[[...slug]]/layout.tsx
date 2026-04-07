@@ -14,8 +14,8 @@ import type { LayoutProps as Props } from "./_types";
 
 // Exemple: release-server--nelya-1
 const banner = (
-  <Banner storageKey="add-opengraph-to-wiki--03-02-2026">
-    Добавлены OpenGraph-описания для статей
+  <Banner storageKey="add-theme-sectioon-for-content-to-wiki--07-04-2026">
+    Добавлены разделы для вики под разные сферы деятельности
   </Banner>
 );
 const navbar = (
