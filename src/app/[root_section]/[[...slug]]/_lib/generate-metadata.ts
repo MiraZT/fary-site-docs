@@ -1,13 +1,21 @@
 import { importPage } from "nextra/pages";
+import { resolvePathSegments } from "./";
+
 import { BASE_SITE_URL } from "@/shared/lib/constants";
 
 import type { PageProps } from "../_types";
+import type { Metadata } from "next";
 
-export async function generateMetadata(props: PageProps) {
-  const { slug } = await props.params;
-  const { metadata } = await importPage(slug);
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const { root_section: rootSection, slug } = await props.params;
+  const pathSegments = resolvePathSegments(await props.params);
 
-  const pageUrl = slug ? `${BASE_SITE_URL}/${slug}` : BASE_SITE_URL;
+  const { metadata } = await importPage(pathSegments);
+
+  const pageHref = new URL(
+    `${rootSection}/${pathSegments.join("/")}`,
+    BASE_SITE_URL,
+  ).href;
 
   const title =
     `${metadata.title} « Документация Фейри` || "Документация Фейри";
@@ -37,7 +45,7 @@ export async function generateMetadata(props: PageProps) {
       title: title,
       description: description,
       type: slug ? "article" : "website",
-      url: pageUrl,
+      url: pageHref,
       images: [
         {
           url: ogImageUrl.toString(),
@@ -57,7 +65,7 @@ export async function generateMetadata(props: PageProps) {
       images: [ogImageUrl.toString()],
     },
     alternates: {
-      canonical: pageUrl,
+      canonical: pageHref,
     },
   };
 }

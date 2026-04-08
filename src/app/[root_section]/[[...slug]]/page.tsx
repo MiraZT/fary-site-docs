@@ -1,5 +1,7 @@
-import { importPage } from "nextra/pages";
 import { useMDXComponents as getMDXComponents } from "@/mdx-components";
+import { importPage } from "nextra/pages";
+import { resolvePathSegments } from "./_lib";
+
 import type { PageProps as Props } from "./_types";
 
 export { generateMetadata, generateStaticParams } from "./_lib";
@@ -7,16 +9,18 @@ export { generateMetadata, generateStaticParams } from "./_lib";
 const Wrapper = getMDXComponents().wrapper;
 
 export default async function Page(props: Props) {
-  const params = await props.params;
+  const pathSegments = resolvePathSegments(await props.params);
+
   const {
     default: MDXContent,
     toc,
     metadata,
     sourceCode,
-  } = await importPage(params.slug);
+  } = await importPage(pathSegments);
+
   return (
     <Wrapper toc={toc} metadata={metadata} sourceCode={sourceCode}>
-      <MDXContent {...props} params={params} />
+      <MDXContent {...props} params={props.params} />
     </Wrapper>
   );
 }
